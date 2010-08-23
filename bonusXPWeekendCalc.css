@@ -1,0 +1,23 @@
+#bonusWeekendTable {
+	width: 240px;
+}
+
+input.startTime, input.activityTime {
+	width: 30px;
+}
+
+input.multiplier, input.baseXPInput, input.newXPInput {
+	width: 84px;
+}
+
+#calcMultiplierButton {
+	width: 100%;
+}
+
+td.timeInput {
+	width: 35px;
+}
+
+td.timeLength, td.wideInput {
+	text-align: left;
+}
