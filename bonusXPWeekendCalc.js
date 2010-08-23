@@ -86,7 +86,7 @@ fetchMultiplier: function(time){
 	} else if(time < 600){
 		return 1.125;
 	} else {
-		return 1.5;
+		return 1.1;
 	}
 },
 
