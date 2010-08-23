@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Bonus XP Weekend</title>
+<title>Bonus XP Weekend Calculator</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link type="text/css" href="http://runescape.salmoneus.net/styles/rune.css" rel="stylesheet" />
+<!--<link type="text/css" href="http://runescape.salmoneus.net/styles/rune.css" rel="stylesheet" />-->
 <link type="text/css" href="bonusXPWeekendCalc.css" rel="stylesheet" />
 
 <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="bonusXPWeekendCalc.js"></script>
 </head>
 <body>
-<table cellspacing="0" cellpadding="0" class="tblmain"> 
+<!--<table cellspacing="0" cellpadding="0" class="tblmain"> 
 <tr> 
 <td colspan="2" id="header"> 
 <img src="../images/newrealm.jpg" alt="Sal's Realm of RuneScape" width="780" height="65" /> 
@@ -89,11 +89,11 @@
 <br /> 
 <a href="http://runescape.salmoneus.net/submissions/report_ad.php">[ Report an Advert ]</a> 
 </div></td> 
-<td valign="top" id="content">
+<td valign="top" id="content">-->
 <div class="tophead">Bonus XP Weekend Calculator</div> 
 <div class="tblsub2">Created by Neo Avatars</div>
 <p>
-	This calculator will help you work out how much xp you will gain when skilling during the <a href="http://runescape.salmoneus.net/forums/index.php?showtopic=314498">Bonus XP weekend</a> on the weekend of the 13-14th March.
+	This calculator will help you work out how much xp you will gain when skilling during the <a href="http://runescape.salmoneus.net/forums/index.php?showtopic=327677">Bonus XP weekend</a> on the weekend of the 3rd-6th September 2010.
 </p>
 <div align="center">
 <table id="bonusWeekendTable" class="tblskill">
@@ -121,6 +121,10 @@
 	<tr>
 		<td class="timeInput"><input type="text" name="startMinutesInput" class="startTime bonusInput" id="startMinutesInput" maxlength="2" value="0" /></td>
 		<td class="timeLength">Minutes</td>
+	</tr>
+	<tr title="Summoning only gets 10% bonus xp throughout the whole weekend">
+		<td>Summoning Task: </td>
+		<td colspan="2"><input type="checkbox" name="SummoningTask" value="SummoningTask" id="SummoningTaskBox" /></td>
 	</tr>
 	<tr>
 		<td colspan="3"><input type="submit" value="Calculate!" id="calcMultiplierButton" /></td>
@@ -150,6 +154,7 @@
 		This information can be found in the <a href="http://runescape.salmoneus.net/skills.html">Skill Guides</a>.</li>
 		<li><strong>Task Length</strong> - The amount of time the task takes to complete.</li>
 		<li><strong>Start Time</strong> - The amount of time you will have spent in-game during the weekend before starting the task.</li>
+		<li><strong>Summoning Task</strong> - Tick if the task provides Summoning xp since you will only be given 10% bonus xp throughout the whole weekend</li>
 	</ul>
 </p>
 
