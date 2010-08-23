@@ -1,35 +1,36 @@
 function calculateAverageMultiplier(){
-	//calculates averages to the nearest minute
+	//calculates averages to the nearest minute, as Mod Fnord said it will - http://bit.ly/akMCGm
 	var hoursStr = $('#hoursInput').val();
 	var minutesStr = $('#minutesInput').val();
-	var hours = (parseInt(hoursStr) * 60) + parseInt(minutesStr);
-	if(isNaN(hours)){
-		//don't do anything else
+	var minutes = isNaN(parseInt(minutesStr)) ? 0 : parseInt(minutesStr);
+	var hrs = isNaN(parseInt(hoursStr)) ? 0 : parseInt(hoursStr) * 60;
+	var hours = hrs + minutes;
+	if(hours === 0){
+		//show the error
+		var $err = $('#taskLengthError');
+		$err.show();
+		$('#hoursInput').focus();
+		$err.delay(6000).slideUp();
 	} else { //continue as wanted
 		var startHoursStr = $('#startHoursInput').val();
 		var startMinutesStr = $('#startMinutesInput').val();
-		var start = (parseInt(startHoursStr) * 60) + parseInt(startMinutesStr);
-		if (isNaN(start)){
-			start = 0;
-		}
+		var startHours = isNaN(parseInt(startHoursStr)) ? 0 : parseInt(startHoursStr) * 60;
+		var startMinutes = isNaN(parseInt(startMinutesStr)) ? 0 : parseInt(startMinutesStr);
+		var start = startHours + startMinutes;
 		var xpStr = $('#baseXPInput').val();
-		var xp = parseInt(xpStr);
-		if(isNaN(xp)){
-			xp = 0;
-		}	
+		var xp = isNaN(parseInt(xpStr)) ? 0 : parseInt(xpStr);
 		var multiplier = 0;
 		for(var i = start; i < hours + start; i++){
 			multiplier += calculateMultiplier(i / 60);
 		}
 		multiplier /= hours;
-		$('#multiplierInput').val(Math.round(multiplier * 1000) / 1000); //show to 3dp
+		$('#multiplierInput').val(Math.round(multiplier * 1000) / 1000); //show to 3dp so it's nice to read, while still being useful
 		xp *= multiplier;
-		$('#newXPInput').val(Math.round(xp * 10) / 10);
+		$('#newXPInput').val(Math.round(xp * 10) / 10); //show to 1dp as it is in-game
 	}
 }
 
 function calculateMultiplier(time){
-	//console.log(time);
 	var multiplier = time;
 	if(multiplier >= 10){
 		return 1.1;
@@ -72,15 +73,19 @@ $( document ).ready( function() {
 	$('#calcMultiplierButton').click(function() {
 		calculateAverageMultiplier();
 	});
-	$('.bonusInput').focus(function() {
+	var $input = $('#bonusWeekendTable .bonusInput');
+	$input.focus(function() {
 		inputFocus($(this));
 	});
-	$('.bonusInput').blur(function() {
+	$input.blur(function() {
 		inputBlur($(this));
 	});
-	$('.bonusInput').keydown(function(e) {
+	$input.keydown(function(e) {
 		if(e.keyCode == '13'){
 			calculateAverageMultiplier();
 		}
 	});
+	//some sort of visual error now that it doesn't fill the result boxes with 'NaN'
+	$('#bonusWeekendTable').after('<div id="taskLengthError"><strong>Note:</strong> The task needs a specified time that it takes to complete.</div>');
+	$('#taskLengthError').hide();
 });
