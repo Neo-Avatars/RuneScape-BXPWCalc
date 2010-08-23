@@ -21,7 +21,7 @@ function calculateAverageMultiplier(){
 		var xp = isNaN(parseInt(xpStr)) ? 0 : parseInt(xpStr);
 		var multiplier = 0;
 		for(var i = start; i < hours + start; i++){
-			multiplier += calculateMultiplier(i / 60);
+			multiplier += calculateMultiplier(i);// / 60);
 		}
 		multiplier /= hours;
 		$('#multiplierInput').val(Math.round(multiplier * 1000) / 1000); //show to 3dp so it's nice to read, while still being useful
@@ -31,16 +31,42 @@ function calculateAverageMultiplier(){
 }
 
 function calculateMultiplier(time){
-	var multiplier = time;
-	if(multiplier >= 10){
+	//var multiplier = time;
+	if(time < 16){
+		return 2.7;
+	} else if(time < 61){
+		return 2.5;
+	} else if(time < 106){
+		return 2.3;
+	} else if(time < 151){
+		return 2.1;
+	} else if(time < 196){
+		return 1.9;
+	} else if(time < 241){
+		return 1.7;
+	} else if(time < 283){
+		return 1.5;
+	} else if(time < 331){
+		return 1.4;
+	} else if(time < 376){
+		return 1.3;
+	} else if(time < 421){
+		return 1.2;
+	} else {
+		return 1.1;
+	}
+	/*if(multiplier >= 10){
 		return 1.1;
 	} else {
 		multiplier -= 10;
 		multiplier /= 7.5;
+		multiplier = Math.floor(multiplier * 10) / 10;
 		multiplier *= multiplier;
+		multiplier = Math.floor(multiplier * 10) / 10;
 		multiplier += 1.1;
+		console.log(time, multiplier);
 		return multiplier;
-	}
+	}*/
 }
 
 function inputFocus(el) {
